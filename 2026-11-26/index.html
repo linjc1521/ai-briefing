@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>AI Briefing · Thu 26 Nov 2026</title>
+<meta name="description" content="AI briefing for Thursday 26 November 2026, with audio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f3ee;--paper:#ffffff;--ink:#16181d;--muted:#5d6370;--line:#e4dfd6;
+  --accent:#c2410c;--accent-soft:#fdebe1;--chip:#efe9df;--hero1:#1e1b4b;--hero2:#7c2d12;
+  --school:#0f766e;--school-soft:#e3f4f1;--hl:#fff1c2;--shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.06);
+}
+:root[data-theme="dark"]{
+  --bg:#0f1115;--paper:#181b21;--ink:#eceef2;--muted:#9aa1ad;--line:#2a2e37;
+  --accent:#fb923c;--accent-soft:#3a2416;--chip:#232731;--hero1:#312e81;--hero2:#9a3412;
+  --school:#2dd4bf;--school-soft:#12302c;--hl:#3b3416;--shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1115;--paper:#181b21;--ink:#eceef2;--muted:#9aa1ad;--line:#2a2e37;
+    --accent:#fb923c;--accent-soft:#3a2416;--chip:#232731;--hero1:#312e81;--hero2:#9a3412;
+    --school:#2dd4bf;--school-soft:#12302c;--hl:#3b3416;--shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+a{color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+header.mast{padding-top:22px;padding-bottom:14px;border-bottom:3px double var(--line)}
+.mast-top{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mast h1{font-family:Fraunces,Georgia,serif;font-weight:800;font-size:44px;line-height:1;margin:10px 0 6px;letter-spacing:-.02em}
+.mast h1 span{color:var(--accent)}
+.mast .sub{color:var(--muted);font-size:14px}
+.iconbtn{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;height:34px;min-width:34px;padding:0 10px;font-size:15px;cursor:pointer}
+.lede{font-family:Fraunces,Georgia,serif;font-size:19px;line-height:1.45;margin:16px 0 4px}
+/* player */
+.player{background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:14px;margin:16px 0}
+.player-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.play{flex:none;width:52px;height:52px;border-radius:50%;border:0;background:var(--accent);color:#fff;font-size:20px;cursor:pointer;display:grid;place-items:center}
+.play:active{transform:scale(.96)}
+.pinfo{flex:1;min-width:150px}
+.pinfo b{display:block;font-size:15px}
+.pinfo small{color:var(--muted);font-size:13px}
+.bar{height:5px;background:var(--chip);border-radius:9px;margin-top:10px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.controls label{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+select{background:var(--chip);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:6px 8px;font:inherit;font-size:13px;max-width:190px}
+.ghost{background:var(--chip);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}
+.warn{display:none;margin-top:10px;font-size:13px;color:var(--accent)}
+details.script{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+details.script summary{cursor:pointer;font-size:13px;font-weight:600;color:var(--muted)}
+#script p{margin:10px 0;padding:6px 8px;border-radius:8px;font-size:15px;transition:background .3s;cursor:pointer}
+#script p.reading{background:var(--hl)}
+/* tabs */
+nav.tabs{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:8px;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
+nav.tabs .wrap::-webkit-scrollbar{display:none}
+nav.tabs a{flex:none;text-decoration:none;font-size:13px;font-weight:600;padding:7px 13px;border-radius:999px;background:var(--chip);color:var(--ink);border:1px solid var(--line);white-space:nowrap}
+nav.tabs a.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+section{padding:22px 0 6px}
+h2{font-family:Fraunces,Georgia,serif;font-size:26px;margin:0 0 14px;display:flex;align-items:center;gap:10px}
+h2 .count{font-family:Inter,sans-serif;font-size:12px;font-weight:600;color:var(--muted);background:var(--chip);border-radius:999px;padding:2px 9px}
+/* cards */
+.card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 16px 14px;margin:0 0 14px;box-shadow:var(--shadow);transition:outline-color .2s}
+.card.reading{outline:3px solid var(--accent);outline-offset:-1px}
+.card h3{font-size:17px;line-height:1.35;margin:0 44px 8px 0;font-weight:700}
+.card p{margin:0 0 10px;color:var(--ink)}
+.card p.s{color:var(--muted);font-size:15px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.tag{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:2px 8px;border-radius:6px}
+.tag.sc{color:var(--school);background:var(--school-soft)}
+.pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.pills a{font-size:12.5px;font-weight:600;text-decoration:none;padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:var(--chip)}
+.pills a::after{content:" ↗";opacity:.6}
+.pills a:active{transform:scale(.97)}
+.say{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--chip);cursor:pointer;font-size:16px;color:var(--ink)}
+.say.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+/* hero */
+.hero{background:linear-gradient(140deg,var(--hero1),var(--hero2));color:#fff;border:0;padding:22px 18px 18px;border-radius:20px}
+.hero .kicker{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.hero h3{font-family:Fraunces,Georgia,serif;font-size:27px;line-height:1.15;margin:8px 44px 12px 0;font-weight:800}
+.hero p{color:#fff;opacity:.95}
+.hero .pills a{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3);color:#fff}
+.hero .say{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.35);color:#fff}
+.hero .tag{background:rgba(255,255,255,.18);color:#fff}
+.hero blockquote{margin:12px 0;padding:10px 12px;border-left:3px solid rgba(255,255,255,.6);background:rgba(0,0,0,.15);border-radius:0 10px 10px 0;font-family:Fraunces,Georgia,serif;font-size:16px}
+/* table */
+.tbl{overflow-x:auto;margin:4px 0 12px}
+.tbl table{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th,.tbl td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+.tbl th{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);background:var(--chip)}
+.tbl td.n{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.tbl tr.me td{color:var(--accent)}
+/* schools callout */
+.schools{background:var(--school-soft);border:1px solid color-mix(in srgb,var(--school) 35%,transparent);border-left:5px solid var(--school)}
+.schools h3{color:var(--school)}
+.xgroup h4{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:16px 0 8px}
+.xgroup .card{padding:12px 14px}
+.xgroup .card p{margin:0 44px 6px 0;font-size:15px}
+.gaps{border-style:dashed}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 0 60px}
+#top{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));width:46px;height:46px;border-radius:50%;border:0;background:var(--ink);color:var(--bg);font-size:20px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .25s;cursor:pointer;z-index:30}
+#top.show{opacity:1;pointer-events:auto}
+@media (min-width:700px){.mast h1{font-size:60px}.hero h3{font-size:34px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+.seekrow{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+#seek{flex:1;accent-color:var(--accent);height:28px;margin:0}
+.vnote{font-size:12px;color:var(--muted);margin-top:10px}
+.say.loading{opacity:.6}
+</style>
+</head>
+<body>
+<header class="mast wrap" id="masthead">
+  <div class="mast-top">
+    <span>Thu 26 Nov 2026 · <span id="rt">— min read</span></span>
+    <button class="iconbtn" id="theme" aria-label="Toggle light or dark mode" title="Light / dark">◐</button>
+  </div>
+  <h1>AI <span>Briefing</span></h1>
+  <div class="sub">Curated for JC · Thursday edition</div>
+  <p class="lede">A science-heavy day. <b>OpenAI says matrix multiplication's exponent is exactly 9/4</b>, GPT-6 designed proteins that bound their targets in a real lab, and Anthropic rebuilt its API in Rust with Claude agents checking the work. Plus an Australian take on Google Search in schools.</p>
+
+  <div class="player" id="player">
+    <div class="player-row">
+      <button class="play" id="pp" aria-label="Listen to briefing">▶</button>
+      <div class="pinfo">
+        <b>Listen to briefing</b>
+        <small id="pstatus">Natural Australian voice · 5 min 2 s</small>
+      </div>
+    </div>
+    <div class="seekrow">
+      <span id="tcur">0:00</span>
+      <input type="range" id="seek" min="0" max="1000" value="0" step="1" aria-label="Seek">
+      <span id="ttot">5:02</span>
+    </div>
+    <div class="controls">
+      <button class="ghost" id="prev" aria-label="Previous paragraph">⏮</button>
+      <button class="ghost" id="next" aria-label="Next paragraph">⏭</button>
+      <button class="ghost" id="stop">■ Stop</button>
+      <label>Speed
+        <select id="rate">
+          <option value="0.8">0.8×</option><option value="0.9">0.9×</option><option value="1" selected>1×</option>
+          <option value="1.1">1.1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option>
+        </select>
+      </label>
+    </div>
+    <div class="vnote">🎙️ Voice: Natasha · Australian neural voice</div>
+    <div class="warn" id="warn"></div>
+    <details class="script">
+      <summary>Read along with the script (tap a paragraph to start there)</summary>
+      <div id="script">
+<p>Hey JC, it's Thursday the twenty-sixth of November, and here's your AI briefing. It's a science-heavy one today. OpenAI says it has pinned down exactly how fast matrix multiplication can ever get, its GPT-6 models designed proteins that actually worked in a lab, and Anthropic rebuilt its own API with Claude agents checking the work. Plus there's a good Aussie read on Google search in schools.</p>
+<p>So, the lead. Matrix multiplication is the maths underneath basically all of AI, and for decades people have asked how fast it can possibly be done. That limit is captured by one number, called the exponent. An upper bound of nine quarters, or 2.25, was already out there. Now, in a paper dated the twenty-fourth of November, OpenAI claims the matching lower bound, which would make the exponent exactly 2.25, over every field. Greg Brockman shared one reaction: "This is really the kind of result that I never thought I would see in my lifetime." The Lean proof checks, and an independent open audit has certified it. But the Lean version only covers circuits without division, while the paper's claim is broader, and no human referee has signed off yet.</p>
+<p>Staying with OpenAI. A new preprint says GPT-6 models can design new protein shapes using just reasoning and code. In the lab, their partner Onava tested 322 small binding proteins against five targets, and 35 of them, about eleven percent, stuck to their target. Specialised models still helped with the sequences and picking candidates, and binding isn't the same as a working drug. Separately, Sam Altman says OpenAI is now testing Private Inference with a small group of business customers. It runs prompts on sealed-off chips, so the company's data stays private while the model works on it.</p>
+<p>Over at Anthropic, the engineering blog explains how they moved the Messages API, the thing that Claude Code and every customer talks to, from Python to Rust. Claude wrote the first version of the core in about a week, then teams of Claude agents compared it against live traffic and fixed the differences. The result uses about seventy percent less CPU and is about twenty percent faster to the first token. Anthropic Fellows also published research arguing that individual neurons are more readable than people assumed. And in a bit of talent news, Thariq Shihipar, one of the best-known faces of Claude Code, posted that he's joined OpenAI.</p>
+<p>Google made its Workspace MCP servers and a Workspace command-line tool generally available. That means AI agents get an official, admin-controlled way into Gmail, Drive, Docs, Sheets, Slides, Calendar, Chat and Tasks. Sundar Pichai also says Gemini 4 Neon set a day-one record on Google's paid APIs, though Google didn't share the actual numbers.</p>
+<p>In Chinese AI, Tencent's Hunyuan team open-sourced its third-generation translation model, Hy MT3, in three sizes, small enough to run on phones and PCs. DeepSeek's funding round has made founder Liang Wenfeng the richest AI founder, at about fifty-five billion US dollars, and the company is reportedly preparing a listing on Shanghai's STAR Market. And a Washington Post reporter found Nvidia's top B300 chips still being openly sold in Shenzhen, despite the US ban.</p>
+<p>Now, education. The Conversation asks whether Australian schools should follow big US districts that are thinking about dropping Google Search, because its AI overviews can't be switched off. Google says its AI tools will be off by default for students from next year, with admins able to switch them back on, but there's still no AI-free Google Search. And Education Week says teacher AI use in the US has plateaued, at sixty-two percent, almost the same as last year. For us, it's worth checking our Google admin settings before Term 1, and shifting AI professional learning from "try it" to "use it well".</p>
+<p>Quickly, on X. Sam Altman announced the Private Inference test, and OpenAI's protein post was one of its biggest of the day. On the Claude side, Anthropic shared the Rust migration and the neuron research, and the Claude account showed off two weeks of Fable 5.2 creations. Notion added threaded replies to comments, and says your ChatGPT Business plan now works with Notion Agent too. And Elon is pitching Grok Bot as your Black Friday deal checker.</p>
+<p>That's it for today. The maths claim still needs human review, and it was a quiet day for Victoria-specific news and for Kimi, Qwen and Zhipu. Have a great Thursday, JC.</p>
+      </div>
+    </details>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap">
+    <a href="#top-story">⭐ Top story</a>
+    <a href="#companies">🏢 Major AI companies</a>
+    <a href="#china">🇨🇳 Chinese AI</a>
+    <a href="#education">🎓 AI in education</a>
+    <a href="#onx">𝕏 On X</a>
+    <a href="#gaps">Gaps</a>
+  </div>
+</nav>
+
+<main class="wrap">
+<section id="top-story">
+  <article class="card hero">
+    <div class="kicker">Lead story · OpenAI · Maths</div>
+    <h3>OpenAI claims the matrix multiplication exponent is exactly 9/4</h3>
+    <p>How fast can two big matrices be multiplied? That limit, the exponent ω, has been chipped away at for more than 50 years. An upper bound of 9/4 (2.25) was already known: the paper credits an earlier OpenAI preprint and Amanov, van den Berg and Zuiddam. OpenAI's new paper, dated 24 Nov, claims the matching <b>lower bound</b>: at every size n ≥ 2, a formal arithmetic circuit needs at least ⌈n<sup>9/4</sup>/2⌉ multiplication or division gates. That would make the exponent exactly 9/4 over every field.</p>
+    <p>The Lean formalisation proves the result for <i>division-free</i> circuits. The paper's theorem also allows division gates. An independent open audit by Carlos Toledo declared the Lean statement "CERTIFIED" on 25 Nov, but it notes that nothing has been refereed.</p>
+    <blockquote>"This is really the kind of result that I never thought I would see in my lifetime." — a reaction shared by Greg Brockman</blockquote>
+    <div class="pills">
+      <a href="https://raw.githubusercontent.com/openai/math/main/preprints/The-matrix-multiplication-exponent-is-nine-fourths-November-24-2026/paper.pdf" target="_blank" rel="noopener">Paper (PDF)</a>
+      <a href="https://github.com/openai/math" target="_blank" rel="noopener">OpenAI math repo</a>
+      <a href="https://carlostoledo.co/omega/" target="_blank" rel="noopener">Independent audit</a>
+      <a href="https://x.com/gdb/status/2125418102049628201" target="_blank" rel="noopener">Greg Brockman on X</a>
+    </div>
+  </article>
+</section>
+
+<section id="companies">
+  <h2>🏢 Major AI companies <span class="count">5</span></h2>
+  <article class="card">
+    <div class="tags"><span class="tag">OpenAI</span><span class="tag">Science</span></div>
+    <h3>GPT-6 designs proteins that bind real targets in the lab</h3>
+    <p>OpenAI's preprint says its GPT-6 models can design new protein shapes and sequences using only reasoning and code. In partner Onava's lab, 35 of 322 minibinders (10.9%) bound their intended target across five targets, including PD-L1 and VEGF-A. For the lab round, a specialised model (SolubleMPNN) supplied sequences and other models helped pick candidates. Binding alone doesn't show safety or that a protein works as a drug.</p>
+    <div class="pills"><a href="https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities" target="_blank" rel="noopener">OpenAI</a><a href="https://x.com/OpenAI/status/2125334383490105601" target="_blank" rel="noopener">OpenAI on X</a></div>
+  </article>
+  <article class="card">
+    <div class="tags"><span class="tag">OpenAI</span><span class="tag">Privacy</span><span class="tag">Business</span></div>
+    <h3>OpenAI starts testing Private Inference with a few business customers</h3>
+    <p>Private Inference is an alpha feature that uses confidential computing (sealed-off chips) plus "strict verifiable controls" to protect prompts and replies while the model processes them. It is part of OpenAI's Private Intelligence package, alongside Zero Data Retention and Private Safety Processing, which began rolling out in September. OpenAI is still lining up compute before a wider rollout.</p>
+    <div class="pills"><a href="https://openai.com/business/private-intelligence/" target="_blank" rel="noopener">OpenAI: Private Intelligence</a><a href="https://thenextweb.com/news/openai-private-inference-testing-customers" target="_blank" rel="noopener">The Next Web</a><a href="https://x.com/sama/status/2125638790593274259" target="_blank" rel="noopener">Sam Altman on X</a></div>
+  </article>
+  <article class="card">
+    <div class="tags"><span class="tag">Anthropic</span><span class="tag">Engineering</span><span class="tag">Research</span></div>
+    <h3>Anthropic moves its Messages API to Rust, with Claude agents checking parity</h3>
+    <p>API traffic grew about 1,800× from early 2024 to fall 2026. Claude wrote a first Rust version of the core request path in about a week. Anthropic then ran it against production traffic, found where it differed from the Python version, and automatically sent Claude agents to fix the gaps. The new API uses about 70% less CPU per request and cuts median time to first token by about 20%, with no downtime.</p>
+    <p>Also new: Anthropic Fellows research, <i>Returning to the neuron basis</i>, argues that individual neurons are more readable, and more useful for safety, than earlier work assumed.</p>
+    <div class="pills"><a href="https://www.anthropic.com/research/migrating-api-to-rust" target="_blank" rel="noopener">Anthropic: Rust migration</a><a href="https://alignment.anthropic.com/2026/neuron-basis-theory/" target="_blank" rel="noopener">Neuron basis, Part 1</a><a href="https://alignment.anthropic.com/2026/neuron-basis-applications/" target="_blank" rel="noopener">Part 2</a></div>
+  </article>
+  <article class="card">
+    <div class="tags"><span class="tag">Google</span><span class="tag">Workspace</span><span class="tag">Agents</span></div>
+    <h3>Workspace MCP servers and CLI go GA, and Gemini 4 Neon sets an API record</h3>
+    <p>Google-hosted Workspace MCP servers let AI agents call ready-made tools across Gmail, Drive, Docs, Sheets, Slides, Calendar, Chat and Tasks, with Keep coming soon. A new Workspace CLI does the same for terminal-based agents. Both come with standardised usage tiers and expanded admin controls over AI agents.</p>
+    <p>Sundar Pichai says Gemini 4 Neon set a day-one record on Google's paid APIs. Google didn't say how big the record was or what it measured.</p>
+    <div class="pills"><a href="https://workspaceupdates.googleblog.com/2026/11/mcp-servers-cli-standardized-usage-tiers-now-available.html" target="_blank" rel="noopener">Workspace Updates</a><a href="https://aiindustrytoday.com/news/google-gemini-4-neon-paid-api-launch-record-antigravity-tokens/" target="_blank" rel="noopener">AI Industry Today</a></div>
+  </article>
+  <article class="card">
+    <div class="tags"><span class="tag">Talent</span><span class="tag">Quick one</span></div>
+    <h3>Claude Code's Thariq Shihipar joins OpenAI</h3>
+    <p>Thariq Shihipar, one of the best-known Claude Code voices on X, posted "I've joined OpenAI!" He said he's proud of his time at Anthropic and will keep rooting for his former colleagues. Earlier reports had said he was moving, but neither side had confirmed it until now.</p>
+    <div class="pills"><a href="https://x.com/trq212/status/2125675533761671405" target="_blank" rel="noopener">Thariq on X</a><a href="https://officechai.com/ai/anthropics-thariq-shihipar-who-was-the-face-of-claude-code-on-x-has-reportedly-joined-openai/" target="_blank" rel="noopener">OfficeChai</a></div>
+  </article>
+</section>
+
+<section id="china">
+  <h2>🇨🇳 Chinese AI <span class="count">3</span></h2>
+  <article class="card">
+    <div class="tags"><span class="tag">Tencent</span><span class="tag">Open source</span><span class="tag">Translation</span></div>
+    <h3>Tencent Hunyuan open-sources Hy MT3, its third-generation translation model</h3>
+    <p>Released on 24 Nov, Hy MT3 comes in 1.8B, 7B and 30B-A3B (mixture-of-experts) sizes, aimed at on-device use on PCs, phones and smart devices. It's live in Tencent's Hy translation app and mini-program, and the weights can be downloaded and self-hosted.</p>
+    <div class="pills"><a href="https://www.yicai.com/news/103452294.html" target="_blank" rel="noopener">第一财经 Yicai</a><a href="https://www.iimedia.cn/c1088/120774.html" target="_blank" rel="noopener">艾媒网 iiMedia</a></div>
+  </article>
+  <article class="card">
+    <div class="tags"><span class="tag">DeepSeek</span><span class="tag">Funding</span></div>
+    <h3>DeepSeek's founder becomes the richest AI founder, at about US$55B</h3>
+    <p>DeepSeek's second funding round, about ¥105.5 billion, values the company at roughly US$86 billion. Liang Wenfeng's stake fell to 67.4%, but his wealth more than tripled this year. Chinese media report that DeepSeek is preparing a STAR Market IPO, with CITIC Securities as listing adviser.</p>
+    <div class="pills"><a href="https://www.thestar.com.my/business/business-news/2026/11/25/deepseek-founder-now-worth-us55bil" target="_blank" rel="noopener">The Star</a><a href="https://www.thepaper.cn/newsDetail_forward_34553467" target="_blank" rel="noopener">澎湃 The Paper</a><a href="https://www.caixinglobal.com/2026-11-20/deepseek-closes-100-billion-yuan-funding-round-102506825.html" target="_blank" rel="noopener">Caixin Global</a></div>
+  </article>
+  <article class="card">
+    <div class="tags"><span class="tag">Chips</span><span class="tag">Alibaba</span><span class="tag">Quick ones</span></div>
+    <h3>Quick ones: Nvidia B300s on sale in Shenzhen, and Alibaba tidies up Qwen4</h3>
+    <p><b>Chips:</b> A Washington Post reporter found sellers at Shenzhen's Huaqiangbei market still offering Nvidia's top chips despite the US ban. Black-market prices have surged amid the turmoil around Jensen Huang.</p>
+    <p><b>Alibaba:</b> On 25 Nov, Model Studio retired the Qwen4-Max preview and now routes it to the official model, which launched on 16 Nov. It also added "decision-model", which does classification, yes/no decisions and scoring, with confidence scores.</p>
+    <div class="pills"><a href="https://www.washingtonpost.com/world/2026/11/25/top-nvidia-chips-are-still-offer-china-despite-us-ban/" target="_blank" rel="noopener">Washington Post</a><a href="https://www.alibabacloud.com/help/en/model-studio/newly-released-models" target="_blank" rel="noopener">Alibaba Model Studio</a></div>
+  </article>
+</section>
+
+<section id="education">
+  <h2>🎓 AI in education <span class="count">2</span></h2>
+  <article class="card">
+    <div class="tags"><span class="tag sc">🇦🇺 The Conversation</span><span class="tag">Search</span></div>
+    <h3>US schools are moving away from AI in Google Search. Should Australia follow?</h3>
+    <p>Districts in Los Angeles, New York City and Chicago are considering dropping Google Search because AI Overviews can't be switched off. Google says students' AI tools, including Gemini, will be off by default from next year, and admins can turn them back on. But there's still no AI-free Google Search. The piece weighs what that means for students' research skills and digital literacy in Australian classrooms.</p>
+    <div class="pills"><a href="https://theconversation.com/us-schools-are-moving-away-from-ai-in-google-searches-should-australia-do-the-same-297160" target="_blank" rel="noopener">The Conversation</a></div>
+  </article>
+  <article class="card">
+    <div class="tags"><span class="tag">Teachers</span><span class="tag">Survey</span></div>
+    <h3>Teacher AI use has plateaued at 62%</h3>
+    <p>In an EdWeek Research Center survey of 590 US teachers (Aug–Oct 2026), 62% said they use AI in class at least a little. That's up just one point from 2025, after it nearly doubled from 34% between 2023 and 2025. ISTE's Joseph South called the earlier jump one of the fastest technology uptakes schools have seen.</p>
+    <div class="pills"><a href="https://www.edweek.org/technology/why-teacher-ai-use-has-plateaued-and-what-could-come-next/2026/11" target="_blank" rel="noopener">Education Week</a></div>
+  </article>
+  <article class="card schools">
+    <div class="tags"><span class="tag sc">Schools</span></div>
+    <h3>🏫 For schools</h3>
+    <p>Before Term 1, check what Google's default-off student AI setting will do in our Workspace for Education domain. Decide with the library which search tools students should use for research tasks, and keep it in line with the new national restrictions on GenAI in assessments.</p>
+    <p>The plateau suggests the next step for staff professional learning is depth over reach. Move from "try AI" to good subject-specific use and checking what it gets wrong.</p>
+  </article>
+</section>
+
+<section id="onx" class="xgroup">
+  <h2>𝕏 On X</h2>
+  <h4>ChatGPT / OpenAI</h4>
+  <article class="card"><p>Sam Altman: OpenAI is "now testing Private Inference… with a small group of customers", saying that "business privacy is important for a healthy ecosystem".</p>
+    <div class="pills"><a href="https://x.com/sama/status/2125638790593274259" target="_blank" rel="noopener">Sam Altman on X</a></div></article>
+  <article class="card"><p>OpenAI's protein-design preprint post was its biggest of the day, with about 10.6k likes. Greg Brockman called it "the unreasonable effectiveness of reasoning and code".</p>
+    <div class="pills"><a href="https://x.com/OpenAI/status/2125334383490105601" target="_blank" rel="noopener">OpenAI on X</a><a href="https://x.com/gdb/status/2125341356503748716" target="_blank" rel="noopener">Greg Brockman on X</a></div></article>
+  <h4>Claude</h4>
+  <article class="card"><p>@claudeai marked two weeks of Claude Fable 5.2 with community creations, like "where the letter A came from, one alphabet at a time".</p>
+    <div class="pills"><a href="https://x.com/claudeai/status/2125616057788637364" target="_blank" rel="noopener">Claude on X</a></div></article>
+  <article class="card"><p>@AnthropicAI shared the Python-to-Rust migration, with "teams of Claude agents tracking down and fixing differences", and the Fellows' neuron-basis research.</p>
+    <div class="pills"><a href="https://x.com/AnthropicAI/status/2125627317263466739" target="_blank" rel="noopener">Rust migration</a><a href="https://x.com/AnthropicAI/status/2125365268381929637" target="_blank" rel="noopener">Neuron research</a></div></article>
+  <article class="card"><p>Thariq Shihipar, long the face of Claude Code on X: "I've joined OpenAI!"</p>
+    <div class="pills"><a href="https://x.com/trq212/status/2125675533761671405" target="_blank" rel="noopener">Thariq on X</a></div></article>
+  <h4>Notion</h4>
+  <article class="card"><p>Notion comments now have threaded replies: "reply to any comment in its own thread to keep conversations organized by topic."</p>
+    <div class="pills"><a href="https://x.com/NotionHQ/status/2125328089202728976" target="_blank" rel="noopener">Notion on X</a></div></article>
+  <article class="card"><p>Notion: using your ChatGPT plan with Notion Agent "now works with ChatGPT's Business plan, too."</p>
+    <div class="pills"><a href="https://x.com/NotionHQ/status/2125667919686214044" target="_blank" rel="noopener">Notion on X</a><a href="https://www.notion.com/help/use-your-chatgpt-plan-with-notion-agent" target="_blank" rel="noopener">Notion Help</a></div></article>
+  <h4>Grok</h4>
+  <article class="card"><p>Elon Musk: "Grok Bot can research the best Black Friday deals for you and confirm they're authentic". It's one of his most-liked Grok posts of the day.</p>
+    <div class="pills"><a href="https://x.com/elonmusk/status/2125464682580623467" target="_blank" rel="noopener">Elon Musk on X</a></div></article>
+</section>
+
+<section id="gaps">
+  <h2>Gaps</h2>
+  <article class="card gaps">
+    <h3>What we didn't find today</h3>
+    <p class="s">The 9/4 claim hasn't had human peer review yet. I found no new Victorian AI-in-schools announcement. Kimi, Qwen (beyond housekeeping), Zhipu, MiniMax and ByteDance had no new launches in the window, and Meta, Microsoft and xAI had nothing new I could verify. I skipped rumours of a "factoring in P" breakthrough, "leaked" Claude Opus 5.6 images, and reported Amazon–Meta Muse shopping talks, because none are confirmed.</p>
+  </article>
+</section>
+</main>
+<footer class="wrap">AI Briefing · Thursday 26 November 2026 · Curated for JC<br>Audio narration: Microsoft neural voice (en-AU Natasha), generated for this page.</footer>
+<button id="top" aria-label="Back to top">↑</button>
+
+<script>
+(function(){
+  "use strict";
+  var $ = function(s,r){return (r||document).querySelector(s);};
+  var $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));};
+  var PD = [27.26, 51.38, 42.79, 41.95, 25.27, 31.18, 38.88, 30.48, 12.74], CD = [69.91, 39.6, 30.07, 47.88, 39.1, 21.1, 25.97, 28.85, 38.23, 33.22, 31.06, 29.5, 10.49, 11.98, 9.29, 10.25, 6.12, 8.47, 7.8, 10.2, 30.94];
+  var OFF = []; var TOTAL = PD.reduce(function(a,d,i){ OFF[i]=a; return a+d; },0);
+  function pad(n){ return (n<10?"0":"")+n; }
+  function fmt(t){ t=Math.max(0,Math.round(t)); return Math.floor(t/60)+":"+pad(t%60); }
+  function pfile(i){ return "audio/p"+pad(i+1)+".mp3"; }
+  function cfile(i){ return "audio/c"+pad(i+1)+".mp3"; }
+
+  /* ---------- theme ---------- */
+  var root = document.documentElement;
+  try{ var saved = localStorage.getItem("brief-theme"); if(saved) root.setAttribute("data-theme", saved);}catch(e){}
+  $("#theme").addEventListener("click", function(){
+    var cur = root.getAttribute("data-theme") ||
+      (window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try{ localStorage.setItem("brief-theme", next);}catch(e){}
+  });
+
+  /* ---------- reading time ---------- */
+  var words = ($("main").innerText || $("main").textContent).trim().split(/\s+/).length;
+  $("#rt").textContent = Math.max(1, Math.round(words/220)) + " min read";
+
+  /* ---------- back to top + active tab ---------- */
+  var topBtn = $("#top");
+  topBtn.addEventListener("click", function(){ window.scrollTo({top:0, behavior:"smooth"}); });
+  var tabs = $$("nav.tabs a");
+  var secs = tabs.map(function(a){ return document.getElementById(a.getAttribute("href").slice(1)); });
+  function onScroll(){
+    topBtn.classList.toggle("show", window.scrollY > 600);
+    var idx = -1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top < 120) idx = i; });
+    tabs.forEach(function(a,i){
+      var on = i === idx;
+      if(on && !a.classList.contains("on")){ try{ a.parentNode.scrollTo({left:a.offsetLeft - 16, behavior:"smooth"}); }catch(e){} }
+      a.classList.toggle("on", on);
+    });
+  }
+  window.addEventListener("scroll", onScroll, {passive:true}); onScroll();
+
+  /* ---------- elements ---------- */
+  var pp=$("#pp"), pstatus=$("#pstatus"), seek=$("#seek"), tcur=$("#tcur"), ttot=$("#ttot"), rateSel=$("#rate"), warn=$("#warn");
+  var paras = $$("#script p");
+  var cards = $$("main .card");
+  ttot.textContent = fmt(TOTAL);
+  try{ var r = localStorage.getItem("brief-rate"); if(r) rateSel.value = r; }catch(e){}
+  function rate(){ return parseFloat(rateSel.value) || 1; }
+
+  /* ---------- audio engine ---------- */
+  var audio = new Audio();
+  audio.preload = "auto";
+  try{ audio.preservesPitch = true; }catch(e){}
+  // state: mode "main" | "card" | null ; idx = paragraph or card index
+  var st = { mode:null, idx:0, playing:false, btn:null, pendingSeek:0, useSpeech:false };
+
+  function clearHL(){
+    $$(".reading").forEach(function(e){ e.classList.remove("reading"); });
+    $$(".say.on").forEach(function(b){ b.classList.remove("on","loading"); b.textContent = "🔊"; });
+  }
+  function hlPara(i){
+    paras.forEach(function(p,j){ p.classList.toggle("reading", j===i); });
+    if($("details.script").open && paras[i]){ try{ paras[i].scrollIntoView({block:"nearest",behavior:"smooth"}); }catch(e){} }
+  }
+  function ui(){
+    var mainPlaying = st.mode==="main" && st.playing;
+    pp.textContent = mainPlaying ? "❚❚" : "▶";
+    pp.setAttribute("aria-label", mainPlaying ? "Pause briefing" : "Listen to briefing");
+    if(st.mode==="main"){
+      pstatus.textContent = (st.playing?"Playing":"Paused") + " · paragraph " + (st.idx+1) + " of " + PD.length + (st.useSpeech?" · device voice":"");
+    }
+  }
+  function globalTime(){ return st.mode==="main" ? OFF[st.idx] + (st.useSpeech?0:(audio.currentTime||0)) : 0; }
+  function paintSeek(){
+    if(st.mode!=="main" || dragging) return;
+    var g = globalTime();
+    seek.value = Math.round(g / TOTAL * 1000);
+    tcur.textContent = fmt(g / 1);
+  }
+
+  function mediaSession(){
+    if(!("mediaSession" in navigator)) return;
+    try{
+      navigator.mediaSession.metadata = new MediaMetadata({title:"AI Briefing · Thu 26 Nov 2026", artist:"Curated for JC", album:"AI Briefing"});
+      navigator.mediaSession.setActionHandler("play", function(){ resume(); });
+      navigator.mediaSession.setActionHandler("pause", function(){ pause(); });
+      navigator.mediaSession.setActionHandler("previoustrack", function(){ jumpPara(st.idx-1); });
+      navigator.mediaSession.setActionHandler("nexttrack", function(){ jumpPara(st.idx+1); });
+    }catch(e){}
+  }
+
+  function playSrc(src, offset){
+    st.useSpeech = false;
+    audio.src = src;
+    st.pendingSeek = offset || 0;
+    audio.playbackRate = rate(); audio.defaultPlaybackRate = rate();
+    var p = audio.play();   // called synchronously inside the tap handler (iOS requirement)
+    if(p && p.catch) p.catch(function(err){
+      if(err && err.name === "NotAllowedError"){ st.playing=false; ui(); return; }
+      onAudioFail();
+    });
+  }
+  audio.addEventListener("loadedmetadata", function(){
+    if(st.pendingSeek){ try{ audio.currentTime = Math.min(st.pendingSeek, Math.max(0,audio.duration-0.2)); }catch(e){} st.pendingSeek = 0; }
+    audio.playbackRate = rate();
+  });
+  audio.addEventListener("play", function(){ audio.playbackRate = rate(); });
+  audio.addEventListener("timeupdate", paintSeek);
+  audio.addEventListener("ended", function(){
+    if(st.useSpeech) return;
+    if(st.mode==="main"){
+      if(st.idx < PD.length-1){ st.idx++; hlPara(st.idx); ui(); playSrc(pfile(st.idx), 0); }
+      else finish();
+    } else if(st.mode==="card"){ stop(); }
+  });
+  audio.addEventListener("error", function(){ if(st.mode && audio.getAttribute("src")) onAudioFail(); });
+  audio.addEventListener("pause", function(){ if(st.mode && !audio.ended && st.playing && !st.useSpeech && !switching){ st.playing=false; ui(); syncCardBtn(); } });
+  audio.addEventListener("playing", function(){ if(st.mode){ st.playing = true; ui(); } });
+  var switching = false;
+
+  function syncCardBtn(){
+    if(st.btn){ st.btn.classList.remove("loading"); st.btn.textContent = st.playing ? "■" : "▶"; }
+  }
+
+  function startMain(i, offset){
+    if(st.mode !== "main"){ stopAll(false); }
+    st.mode="main"; st.idx=Math.max(0,Math.min(PD.length-1,i)); st.playing=true;
+    hlPara(st.idx); ui(); mediaSession();
+    switching = true; playSrc(pfile(st.idx), offset||0); switching = false;
+  }
+  function jumpPara(i){ if(i<0||i>=PD.length) return; if(st.useSpeech){ speechMain(i); } else startMain(i,0); }
+  function pause(){
+    st.playing=false; if(st.useSpeech){ speechStop(); } else audio.pause(); ui(); syncCardBtn();
+  }
+  function resume(){
+    if(!st.mode){ startMain(0,0); return; }
+    if(st.useSpeech){ st.mode==="main" ? speechMain(st.idx) : null; return; }
+    st.playing=true; audio.playbackRate = rate();
+    var p = audio.play(); if(p&&p.catch) p.catch(function(){}); ui(); syncCardBtn();
+  }
+  function stopAll(resetUI){
+    switching = true; try{ audio.pause(); }catch(e){} switching = false;
+    speechStop();
+    st.mode=null; st.playing=false; st.btn=null; clearHL();
+    if(resetUI!==false){
+      pp.textContent="▶"; seek.value=0; tcur.textContent="0:00";
+      pstatus.textContent="Natural Australian voice · " + Math.floor(TOTAL/60) + " min " + Math.round(TOTAL%60) + " s";
+    }
+  }
+  function stop(){ stopAll(true); }
+  function finish(){ stopAll(true); seek.value=1000; tcur.textContent=fmt(TOTAL); pstatus.textContent="Finished · tap ▶ to listen again"; }
+
+  pp.addEventListener("click", function(){
+    if(st.mode==="main"){ st.playing ? pause() : resume(); } else startMain(0,0);
+  });
+  $("#stop").addEventListener("click", stop);
+  $("#prev").addEventListener("click", function(){ if(st.mode==="main"){ (!st.useSpeech && audio.currentTime>3) ? startMain(st.idx,0) : jumpPara(st.idx-1); } else startMain(0,0); });
+  $("#next").addEventListener("click", function(){ if(st.mode==="main") jumpPara(st.idx+1); else startMain(1,0); });
+  paras.forEach(function(p,i){ p.addEventListener("click", function(){ if(st.useSpeech && st.mode==="main") speechMain(i); else startMain(i,0); }); });
+
+  var dragging = false;
+  seek.addEventListener("input", function(){ dragging = true; tcur.textContent = fmt(seek.value/1000*TOTAL); });
+  seek.addEventListener("change", function(){
+    dragging = false;
+    var g = seek.value/1000*TOTAL, i = 0;
+    while(i < PD.length-1 && g >= OFF[i+1]) i++;
+    var off = g - OFF[i];
+    if(st.mode==="main" && i===st.idx && !st.useSpeech){ try{ audio.currentTime = off; }catch(e){} if(!st.playing) resume(); }
+    else if(st.useSpeech){ speechMain(i); }
+    else startMain(i, off);
+  });
+  rateSel.addEventListener("change", function(){
+    try{ localStorage.setItem("brief-rate", rateSel.value);}catch(e){}
+    audio.playbackRate = rate(); audio.defaultPlaybackRate = rate();
+    if(st.useSpeech && st.playing){ st.mode==="main" ? speechMain(st.idx) : null; }
+  });
+
+  /* per-card buttons */
+  cards.forEach(function(card, ci){
+    var b = document.createElement("button");
+    b.className="say"; b.type="button"; b.textContent="🔊"; b.setAttribute("aria-label","Listen to this story");
+    card.appendChild(b);
+    b.addEventListener("click", function(){
+      if(st.mode==="card" && st.btn===b){ st.playing ? pause() : resume(); return; }
+      stopAll(true);
+      st.mode="card"; st.idx=ci; st.btn=b; st.playing=true;
+      card.classList.add("reading"); b.classList.add("on","loading"); b.textContent="■";
+      switching = true; playSrc(cfile(ci), 0); switching = false;
+    });
+  });
+  audio.addEventListener("playing", function(){ if(st.btn){ st.btn.classList.remove("loading"); st.btn.textContent="■"; } });
+
+  /* ---------- fallback: device speech ---------- */
+  var synth = window.speechSynthesis, canSpeak = !!(synth && window.SpeechSynthesisUtterance), voices = [], tok = 0;
+  function rank(v){ var l=(v.lang||"").replace("_","-").toLowerCase(), n=(v.name||"").toLowerCase(), s=0;
+    if(l.indexOf("en-au")===0) s+=300; else if(l.indexOf("en-gb")===0) s+=200; else if(l.indexOf("en-us")===0) s+=150; else if(l.indexOf("en")===0) s+=100; else return -1;
+    if(/natural|neural|premium|enhanced|siri|google|online/.test(n)) s+=50; return s; }
+  function loadVoices(){ if(!canSpeak) return; var l=synth.getVoices()||[]; voices=l.filter(function(v){return rank(v)>=0;}).sort(function(a,b){return rank(b)-rank(a);}); }
+  if(canSpeak){ loadVoices(); try{ synth.onvoiceschanged = loadVoices; }catch(e){} }
+  function chunk(text){
+    var parts = text.match(/[^.!?…]+[.!?…]+["”’)]*\s*|[^.!?…]+$/g) || [text], out=[];
+    parts.forEach(function(p){ p=p.trim(); while(p.length>220){ var c=p.lastIndexOf(" ",220); if(c<1)c=220; out.push(p.slice(0,c)); p=p.slice(c).trim(); } if(p) out.push(p); });
+    return out;
+  }
+  function speechStop(){ tok++; if(canSpeak) synth.cancel(); }
+  function speakList(list, done){
+    var my = ++tok, k = 0;
+    (function nx(){
+      if(my!==tok) return;
+      if(k>=list.length){ done && done(); return; }
+      var u = new SpeechSynthesisUtterance(list[k]); var v = voices[0];
+      if(v){ u.voice=v; u.lang=v.lang; } else u.lang="en-AU";
+      u.rate = rate();
+      u.onend = function(){ if(my!==tok) return; k++; nx(); };
+      u.onerror = function(e){ if(my!==tok) return; if(e && (e.error==="interrupted"||e.error==="canceled")) return; k++; setTimeout(nx,50); };
+      synth.speak(u);
+    })();
+  }
+  function speechMain(i){
+    if(!canSpeak){ return; }
+    synth.cancel(); st.mode="main"; st.idx=i; st.playing=true; st.useSpeech=true; hlPara(i); ui(); paintSeekSpeech();
+    speakList(chunk(paras[i].textContent.trim()), function(){ if(st.idx < PD.length-1) speechMain(st.idx+1); else finish(); });
+  }
+  function paintSeekSpeech(){ seek.value = Math.round(OFF[st.idx]/TOTAL*1000); tcur.textContent = fmt(OFF[st.idx]); }
+  function onAudioFail(){
+    if(st.useSpeech || !st.mode) return;
+    if(!canSpeak){ warn.textContent = "Sorry, the audio couldn't load. Check your connection and try again."; warn.style.display="block"; stop(); return; }
+    warn.textContent = "Audio couldn't load, so your device's voice is reading instead."; warn.style.display="block";
+    if(st.mode==="main"){ speechMain(st.idx); }
+    else {
+      var card = cards[st.idx]; var parts=[];
+      $$("h3, p, blockquote", card).forEach(function(el){ var t=el.textContent.trim(); if(t) parts.push(t); });
+      st.useSpeech = true; synth.cancel();
+      speakList(chunk(parts.join(" ").replace(/🏫\s*/g,"")), function(){ stop(); });
+    }
+  }
+  window.addEventListener("pagehide", function(){ if(canSpeak) synth.cancel(); });
+})();
+
+</script>
+</body>
+</html>
