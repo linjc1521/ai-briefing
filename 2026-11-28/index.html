@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>AI Briefing · Sat 28 Nov 2026</title>
+<meta name="description" content="AI briefing for Saturday 28 November 2026, with audio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f3ee;--paper:#ffffff;--ink:#16181d;--muted:#5d6370;--line:#e4dfd6;
+  --accent:#c2410c;--accent-soft:#fdebe1;--chip:#efe9df;--hero1:#1e1b4b;--hero2:#7c2d12;
+  --school:#0f766e;--school-soft:#e3f4f1;--hl:#fff1c2;--shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.06);
+}
+:root[data-theme="dark"]{
+  --bg:#0f1115;--paper:#181b21;--ink:#eceef2;--muted:#9aa1ad;--line:#2a2e37;
+  --accent:#fb923c;--accent-soft:#3a2416;--chip:#232731;--hero1:#312e81;--hero2:#9a3412;
+  --school:#2dd4bf;--school-soft:#12302c;--hl:#3b3416;--shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1115;--paper:#181b21;--ink:#eceef2;--muted:#9aa1ad;--line:#2a2e37;
+    --accent:#fb923c;--accent-soft:#3a2416;--chip:#232731;--hero1:#312e81;--hero2:#9a3412;
+    --school:#2dd4bf;--school-soft:#12302c;--hl:#3b3416;--shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+a{color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+header.mast{padding-top:22px;padding-bottom:14px;border-bottom:3px double var(--line)}
+.mast-top{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mast h1{font-family:Fraunces,Georgia,serif;font-weight:800;font-size:44px;line-height:1;margin:10px 0 6px;letter-spacing:-.02em}
+.mast h1 span{color:var(--accent)}
+.mast .sub{color:var(--muted);font-size:14px}
+.iconbtn{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;height:34px;min-width:34px;padding:0 10px;font-size:15px;cursor:pointer}
+.lede{font-family:Fraunces,Georgia,serif;font-size:19px;line-height:1.45;margin:16px 0 4px}
+/* player */
+.player{background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:14px;margin:16px 0}
+.player-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.play{flex:none;width:52px;height:52px;border-radius:50%;border:0;background:var(--accent);color:#fff;font-size:20px;cursor:pointer;display:grid;place-items:center}
+.play:active{transform:scale(.96)}
+.pinfo{flex:1;min-width:150px}
+.pinfo b{display:block;font-size:15px}
+.pinfo small{color:var(--muted);font-size:13px}
+.bar{height:5px;background:var(--chip);border-radius:9px;margin-top:10px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.controls label{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+select{background:var(--chip);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:6px 8px;font:inherit;font-size:13px;max-width:190px}
+.ghost{background:var(--chip);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}
+.warn{display:none;margin-top:10px;font-size:13px;color:var(--accent)}
+details.script{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+details.script summary{cursor:pointer;font-size:13px;font-weight:600;color:var(--muted)}
+#script p{margin:10px 0;padding:6px 8px;border-radius:8px;font-size:15px;transition:background .3s;cursor:pointer}
+#script p.reading{background:var(--hl)}
+/* tabs */
+nav.tabs{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:8px;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
+nav.tabs .wrap::-webkit-scrollbar{display:none}
+nav.tabs a{flex:none;text-decoration:none;font-size:13px;font-weight:600;padding:7px 13px;border-radius:999px;background:var(--chip);color:var(--ink);border:1px solid var(--line);white-space:nowrap}
+nav.tabs a.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+section{padding:22px 0 6px}
+h2{font-family:Fraunces,Georgia,serif;font-size:26px;margin:0 0 14px;display:flex;align-items:center;gap:10px}
+h2 .count{font-family:Inter,sans-serif;font-size:12px;font-weight:600;color:var(--muted);background:var(--chip);border-radius:999px;padding:2px 9px}
+/* cards */
+.card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 16px 14px;margin:0 0 14px;box-shadow:var(--shadow);transition:outline-color .2s}
+.card.reading{outline:3px solid var(--accent);outline-offset:-1px}
+.card h3{font-size:17px;line-height:1.35;margin:0 44px 8px 0;font-weight:700}
+.card p{margin:0 0 10px;color:var(--ink)}
+.card p.s{color:var(--muted);font-size:15px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.tag{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:2px 8px;border-radius:6px}
+.tag.sc{color:var(--school);background:var(--school-soft)}
+.pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.pills a{font-size:12.5px;font-weight:600;text-decoration:none;padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:var(--chip)}
+.pills a::after{content:" ↗";opacity:.6}
+.pills a:active{transform:scale(.97)}
+.say{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--chip);cursor:pointer;font-size:16px;color:var(--ink)}
+.say.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+/* hero */
+.hero{background:linear-gradient(140deg,var(--hero1),var(--hero2));color:#fff;border:0;padding:22px 18px 18px;border-radius:20px}
+.hero .kicker{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.hero h3{font-family:Fraunces,Georgia,serif;font-size:27px;line-height:1.15;margin:8px 44px 12px 0;font-weight:800}
+.hero p{color:#fff;opacity:.95}
+.hero .pills a{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3);color:#fff}
+.hero .say{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.35);color:#fff}
+.hero .tag{background:rgba(255,255,255,.18);color:#fff}
+.hero blockquote{margin:12px 0;padding:10px 12px;border-left:3px solid rgba(255,255,255,.6);background:rgba(0,0,0,.15);border-radius:0 10px 10px 0;font-family:Fraunces,Georgia,serif;font-size:16px}
+/* table */
+.tbl{overflow-x:auto;margin:4px 0 12px}
+.tbl table{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th,.tbl td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+.tbl th{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);background:var(--chip)}
+.tbl td.n{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.tbl tr.me td{color:var(--accent)}
+/* schools callout */
+.schools{background:var(--school-soft);border:1px solid color-mix(in srgb,var(--school) 35%,transparent);border-left:5px solid var(--school)}
+.schools h3{color:var(--school)}
+.xgroup h4{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:16px 0 8px}
+.xgroup .card{padding:12px 14px}
+.xgroup .card p{margin:0 44px 6px 0;font-size:15px}
+.gaps{border-style:dashed}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 0 60px}
+#top{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));width:46px;height:46px;border-radius:50%;border:0;background:var(--ink);color:var(--bg);font-size:20px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .25s;cursor:pointer;z-index:30}
+#top.show{opacity:1;pointer-events:auto}
+@media (min-width:700px){.mast h1{font-size:60px}.hero h3{font-size:34px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+.seekrow{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+#seek{flex:1;accent-color:var(--accent);height:28px;margin:0}
+.vnote{font-size:12px;color:var(--muted);margin-top:10px}
+.say.loading{opacity:.6}
+</style>
+</head>
+<body>
+<header class="mast wrap" id="masthead">
+  <div class="mast-top">
+    <span>Sat 28 Nov 2026 · <span id="rt">— min read</span></span>
+    <button class="iconbtn" id="theme" aria-label="Toggle light or dark mode" title="Light / dark">◐</button>
+  </div>
+  <h1>AI <span>Briefing</span></h1>
+  <div class="sub">Curated for JC · Saturday edition</div>
+  <p class="lede">A quiet US Black Friday, but big news at home: <b>Australia passed its Digital Duty of Care law, and it names AI chatbots</b>. The AI companion app Talkie has also pulled out of Australia after an ABC investigation. Elsewhere, OpenAI countersued Apple, Doubao can now edit videos in Jianying from one sentence, and England launched three trials on how AI affects learning.</p>
+
+  <div class="player" id="player">
+    <div class="player-row">
+      <button class="play" id="pp" aria-label="Listen to briefing">▶</button>
+      <div class="pinfo">
+        <b>Listen to briefing</b>
+        <small id="pstatus">Natural Australian voice · 5 min 43 s</small>
+      </div>
+    </div>
+    <div class="seekrow">
+      <span id="tcur">0:00</span>
+      <input type="range" id="seek" min="0" max="1000" value="0" step="1" aria-label="Seek">
+      <span id="ttot">5:43</span>
+    </div>
+    <div class="controls">
+      <button class="ghost" id="prev" aria-label="Previous paragraph">⏮</button>
+      <button class="ghost" id="next" aria-label="Next paragraph">⏭</button>
+      <button class="ghost" id="stop">■ Stop</button>
+      <label>Speed
+        <select id="rate">
+          <option value="0.8">0.8×</option><option value="0.9">0.9×</option><option value="1" selected>1×</option>
+          <option value="1.1">1.1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option>
+        </select>
+      </label>
+    </div>
+    <div class="vnote">🎙️ Voice: Natasha · Australian neural voice</div>
+    <div class="warn" id="warn"></div>
+    <details class="script">
+      <summary>Read along with the script (tap a paragraph to start there)</summary>
+      <div id="script">
+<p>Good morning JC, it's Saturday the 28th of November. It's Black Friday in the US, so the big labs were pretty quiet. But there's real news close to home: Australia has passed a new online safety law that covers AI chatbots. An AI companion app has pulled out of Australia after an ABC investigation. And OpenAI has countersued Apple.</p>
+<p>Let's start with that law. Federal Parliament has passed the Digital Duty of Care. It starts twelve months after Royal Assent, and it covers games, apps, social media and, by name, AI chatbots. These services have to protect people from seriously harmful material, and make sure their features don't cause harm. They also have to protect under-eighteens from things like pornography, eating-disorder content and bullying. The eSafety Commissioner gets bigger powers, including over fake nude images. Fines go up to five percent of global revenue, or a hundred and nine point two million dollars, whichever is bigger. People will also be able to sue.</p>
+<p>Now the big companies. On Friday, OpenAI filed counterclaims against Apple in federal court in San Jose. It says Apple stole its trade secrets and has been coercing and threatening suppliers to stop them working on OpenAI's devices. Apple sued first, back in July, over two former staff who joined OpenAI. The trial is set for July 2027. In the UK, Wired reports that Meta turned down the financial regulator's offer to test its Muse agent together before launch, especially how it makes payments. And a reminder for anyone building on Google's API: Gemini 4 Carbon and Argon double in price from the first of December, to four dollars in and twenty dollars out per million tokens.</p>
+<p>Over to China. ByteDance's Doubao Work now plugs straight into Jianying, the Chinese version of CapCut. You hand over your footage, describe the edit in one sentence, and it cuts the video. Then you can keep tweaking it by chatting, or open a multi-track draft. It can also turn a script or notes into an explainer animation or a short knowledge video, which is very much your kind of content. Tencent also released Hy3D 3.6, which makes production-ready 3D models from a picture or text. You get five free generations a day.</p>
+<p>A few more from China. DeepSeek is testing a panel that shows, after each reply, how many tokens you used and what that would cost at API prices. Chats are still free, but it's the first time users can see the cost. Zhipu executive Yang Haoyi called Thursday's Reuters report that GLM-5.5 is delayed false, and said training on ten thousand Chinese AI chips is going well. Moonshot opened a Kimi research support program that gives scientists API credit and help from the team. And Estonia's government gave DeepSeek and Qwen a red rating, telling agencies, businesses and families to stop using them because of data-security risks.</p>
+<p>In education, the ABC's investigation into the AI companion app Talkie has had results. Apple pulled it from the App Store worldwide, and from Friday morning its website is blocked for Australian and UK visitors. Talkie is owned by the Chinese company MiniMax. The investigation found its characters had inappropriate and abusive chats with children, and evidence that user chats were used to train its models. eSafety is investigating, and the new Children's Online Privacy Code starts on the tenth of December. Separately, TEQSA blocked another thirty-six cheating websites, so six hundred and fifty-two have now been blocked.</p>
+<p>Two more from overseas. In England, the Education Endowment Foundation launched three randomised trials on how generative AI affects learning, especially cognitive offloading, which is when students hand the thinking over to the AI. One trial tests Gemini's Guided Learning mode for Year 9 maths homework. Another compares guided and standard AI for Year 10 science revision. And South Korea plans to grow its AI-focused schools from eleven hundred to fifteen hundred next year, then two thousand in 2028. For us, a good tip is to check which companion and chatbot apps students are actually using. These new trials are also worth following before we write our 2027 AI guidelines.</p>
+<p>Quick look at X. OpenAI's Charlie Marsh says Codex now pulls about eighty percent less data from the API, though it isn't eighty percent faster. OpenAI Devs showed a merch store you can talk to. Jack Clark from Anthropic posted a short story about machine hermeneutics, a future field where humans work to explain science discovered by AI. On the Grok side, Sam Sokolin says Grok Bot plans now go eleven percent further, and routines up to fifty percent further. Elon Musk says Grok Bot aims to pick the best model for each task. And Notion's Ivan Zhao shared that Notion Calendar is now fully native.</p>
+<p>That's it for a quiet Saturday. I didn't find any new product launches from Anthropic, OpenAI or Google in the last day, or anything new from Victoria. Enjoy your weekend, JC.</p>
+      </div>
+    </details>
+  </div>
+</header>
+
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap">
+    <a href="#top-story">⭐ Top story</a>
+    <a href="#companies">🏢 Major AI companies</a>
+    <a href="#china">🇨🇳 Chinese AI</a>
+    <a href="#education">🎓 AI in education</a>
+    <a href="#onx">𝕏 On X</a>
+    <a href="#gaps">Gaps</a>
+  </div>
+</nav>
+
+<main class="wrap">
+<section id="top-story">
+  <article class="card hero">
+    <div class="kicker">Lead story · 🇦🇺 Australia · Online safety law</div>
+    <h3>Australia passes the Digital Duty of Care, and it covers AI chatbots by name</h3>
+    <p>New online safety laws have passed federal Parliament. Online services have to take more responsibility for protecting Australians from serious online harms. The Digital Duty of Care starts <b>12 months after Royal Assent</b>. It applies to games, apps, social media platforms and <b>AI chatbots</b>. Services must protect users from seriously harmful material and conduct, and make sure their features and tools don't cause harm.</p>
+    <p>Platforms must also protect under-18s from harmful content, conduct and features, including pornography, eating-disorder material and online bullying. The eSafety Commissioner gets wider powers, including over cyberbullying and fake nude images. Penalties go up to <b>5% of global revenue or A$109.2 million</b>, whichever is greater. Individuals and groups will also be able to sue for breaches. The department's notice doesn't say how chatbot features like emotional "companion" design will be judged. That will depend on rules and guidance still to come.</p>
+    <blockquote>"It will require online services, including games, apps, social media platforms and AI chatbots to protect Australians from seriously harmful material and conduct." — Department of Infrastructure, Transport, Regional Development, Communications, Sport and the Arts</blockquote>
+    <div class="pills">
+      <a href="https://www.infrastructure.gov.au/department/media/news/digital-duty-care-law-passed" target="_blank" rel="noopener">Government notice (27 Nov)</a>
+    </div>
+  </article>
+</section>
+
+<section id="companies">
+  <h2>🏢 Major AI companies <span class="count">3</span></h2>
+  <article class="card">
+    <div class="tags"><span class="tag">OpenAI</span><span class="tag">Apple</span><span class="tag">Legal</span></div>
+    <h3>OpenAI countersues Apple over trade secrets and suppliers</h3>
+    <p>On Friday (US time), OpenAI filed counterclaims in federal court in San Jose. It accuses Apple of stealing its trade secrets and of "coercing and threatening" suppliers that work with OpenAI. The filing also says Apple encouraged staff to keep work files in personal iCloud accounts and do company business over personal iMessage. Apple sued first, in July, alleging that two former employees took confidential hardware details to OpenAI, which OpenAI denies. The fight is really about who supplies future AI devices, since OpenAI bought Jony Ive's io last year. The trial is set for 19 July 2027.</p>
+    <div class="pills"><a href="https://www.cnbc.com/2026/11/27/openai-countersues-apple-for-stealing-trade-secrets-ft-reports.html" target="_blank" rel="noopener">CNBC / Reuters</a><a href="https://stockanalysis.com/news/openai-countersues-apple-trade-secrets/" target="_blank" rel="noopener">Filing summary</a></div>
+  </article>
+  <article class="card">
+    <div class="tags"><span class="tag">Meta</span><span class="tag">UK</span></div>
+    <h3>Meta turned down a UK regulator's offer to test its Muse agent</h3>
+    <p>The FCA's head of innovation, Colin Payne, told Wired that Meta declined a joint sandbox test of Muse before its UK launch. The FCA especially wanted to see how the agent makes payments for ordinary customers. Payne admitted that tests like this usually take weeks to plan, and Meta only told the FCA about its plans last month. Meta says it has "engaged constructively". The UK's competition watchdog (CMA) has already made Meta change Muse's UK terms. Wired published this on 26 Nov US time, just before this briefing's window.</p>
+    <div class="pills"><a href="https://www.wired.com/story/meta-refused-to-share-muse-for-testing-uk-financial-watchdog-complains/" target="_blank" rel="noopener">Wired</a></div>
+  </article>
+  <article class="card">
+    <div class="tags"><span class="tag">Google</span><span class="tag">Pricing</span><span class="tag">Quick one</span></div>
+    <h3>Reminder: Gemini 4 Carbon and Argon API prices double on 1 December</h3>
+    <p>Google's introductory API prices for its top two Gemini 4 models end on 30 November. Gemini 3.8 Flash and 3.6 Flash go up on 1 January 2027. Neither of the big models is on the free tier. If school tools or your own projects call these models, check the bill. Two other plans changed this week too:</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Service</th><th>Change</th><th>When</th></tr></thead>
+      <tbody>
+        <tr><td>Gemini 4 Carbon / Argon API</td><td>US$2 → $4 input, $10 → $20 output per 1M tokens</td><td>1 Dec</td></tr>
+        <tr><td>Gemini 3.8 / 3.6 Flash API</td><td>$0.75 → $1.50 input, $3.75 → $7.50 output</td><td>1 Jan 2027</td></tr>
+        <tr class="me"><td>Grok Bot plans</td><td>~11% more usage, up to 50% more for routines</td><td>Now</td></tr>
+        <tr><td>DeepSeek app</td><td>Still free; testing a per-reply cost display</td><td>Testing</td></tr>
+      </tbody>
+    </table></div>
+    <div class="pills"><a href="https://aistudio.google.com/docs/pricing" target="_blank" rel="noopener">Gemini API pricing</a><a href="https://x.com/SamSokolin/status/2126027973568466949" target="_blank" rel="noopener">Grok Bot usage post</a></div>
+  </article>
+</section>
+
+<section id="china">
+  <h2>🇨🇳 Chinese AI <span class="count">4</span></h2>
+  <article class="card">
+    <div class="tags"><span class="tag">ByteDance</span><span class="tag">Video</span><span class="tag sc">For creators</span></div>
+    <h3>Doubao Work now edits videos in Jianying (剪映) from one sentence</h3>
+    <p>From 27 Nov, Doubao Work (豆包工作) has an exclusive official Jianying plug-in. You give it your footage, describe the edit in one sentence, and Jianying does the cut. Then you can keep changing it by chatting, or open a multi-track draft to fine-tune it. Through Jianying Hub, it can also turn a script, notes, code or product photos into explainer animations, short knowledge videos, short comics or promo clips. That's handy for talking-head Xiaohongshu videos.</p>
+    <div class="pills"><a href="https://www.yicai.com/brief/103456678.html" target="_blank" rel="noopener">第一财经 Yicai</a></div>
+  </article>
+  <article class="card">
+    <div class="tags"><span class="tag">Tencent</span><span class="tag">3D</span></div>
+    <h3>Tencent releases Hy3D 3.6 for professional 3D assets</h3>
+    <p>Hunyuan's new 3D model makes more detailed geometry and better PBR materials from a reference image or text. Tencent says it's especially good at characters, creatures, clothing and complex props. It's in Tencent Cloud's TokenHub API and Tencent's game-asset and filmmaking tools. The Hunyuan 3D site gives you five free generations a day, which is enough for a classroom demo or a 3D-printing project.</p>
+    <div class="pills"><a href="https://technode.com/2026/11/27/tencent-launches-hy3d-3-6-for-professional-3d-asset-generation/" target="_blank" rel="noopener">TechNode</a><a href="https://tech.cnr.cn/techgd/20261127/t20261127_527885591.shtml" target="_blank" rel="noopener">央广网 CNR</a></div>
+  </article>
+  <article class="card">
+    <div class="tags"><span class="tag">DeepSeek</span><span class="tag">Zhipu</span><span class="tag">Moonshot</span></div>
+    <h3>DeepSeek shows chat costs, Zhipu denies a GLM-5.5 delay, and Kimi funds research</h3>
+    <p><b>DeepSeek:</b> since 26 Nov, some users of the web and Android apps see a panel after each reply. It shows the tokens used and what they'd cost at off-peak API prices (one example: about ¥0.02), plus how much of the context window is full. Chat is still free. This follows earlier free-usage limits.</p>
+    <p><b>Zhipu:</b> on Thursday night, executive Yang Haoyi said on WeChat Moments that the Reuters report of a GLM-5.5 delay was false, and that training on 10,000 domestic AI chips was going well. Zhipu hasn't announced a release date. <b>Moonshot:</b> on 27 Nov it opened applications for a Kimi research support program for natural-science and engineering researchers, with API credit and help from the team.</p>
+    <div class="pills"><a href="https://www.ithome.com/0/103/3157.htm" target="_blank" rel="noopener">IT之家 on DeepSeek</a><a href="https://finance.sina.com.cn/tech/roll/2026-11-26/doc-inkaapny8176881.shtml" target="_blank" rel="noopener">快科技 on Zhipu</a><a href="https://finance.sina.com.cn/tech/digi/2026-11-27/doc-inkaczqh7867849.shtml" target="_blank" rel="noopener">Kimi program</a></div>
+  </article>
+  <article class="card">
+    <div class="tags"><span class="tag">Policy</span><span class="tag">Europe</span></div>
+    <h3>Estonia gives DeepSeek and Qwen a "red" security rating</h3>
+    <p>Estonia's Ministry of Justice and Digital Affairs ran traffic-light security checks on 14 more cloud and AI tools. It rated DeepSeek, Alibaba's Qwen and the Estonian chatbot Botastico red, and told state agencies, businesses and families to stop using them. Reasons include data processed in China and chats possibly used for training. Gemini, Copilot and Mistral Vibe were rated green. ChatGPT and Cursor were rated green or yellow.</p>
+    <div class="pills"><a href="https://news.err.ee/1610206915/estonia-warns-public-to-avoid-deepseek-qwen-and-botastico-ai-platforms" target="_blank" rel="noopener">ERR News</a><a href="https://www.justdigi.ee/uudised/justiits-ja-digiministeerium-taunib-kolme-tehisarurakenduse-kasutamist" target="_blank" rel="noopener">Ministry (Estonian)</a></div>
+  </article>
+</section>
+
+<section id="education">
+  <h2>🎓 AI in education <span class="count">4</span></h2>
+  <article class="card">
+    <div class="tags"><span class="tag sc">🇦🇺 Australia</span><span class="tag">Child safety</span></div>
+    <h3>AI companion app Talkie pulls out of Australia after an ABC investigation</h3>
+    <p>From Friday morning, Australian and UK visitors to Talkie's website see "currently not available in your region". This comes days after Apple removed the app from its App Store worldwide. An ABC and Bureau of Investigative Journalism investigation found inappropriate and abusive chats between Talkie characters and children. Documents showed its Chinese parent company, MiniMax, designed its models to build emotional bonds that keep users talking, and suggested it trained models on chats it called "private". eSafety is investigating. The Information Commissioner points to the Children's Online Privacy Code, which starts on 10 December. Talkie is still on Google Play, which says access is for verified adults only.</p>
+    <div class="pills"><a href="https://www.abc.net.au/news/2026-11-27/talkie-ai-app-blocked-taken-off-apple-store/107433834" target="_blank" rel="noopener">ABC News</a></div>
+  </article>
+  <article class="card">
+    <div class="tags"><span class="tag">England</span><span class="tag">Research</span></div>
+    <h3>EEF launches three trials on how GenAI affects learning</h3>
+    <p>On 27 Nov, England's Education Endowment Foundation (EEF) launched three randomised controlled trials, focused on "cognitive offloading", when students hand their thinking over to AI. The trials are: (1) Gemini's Guided Learning mode for Year 9 maths homework, over six weeks; (2) guided vs standard Copilot or Gemini vs no AI for Year 10 GCSE science revision, with an unaided test one to two weeks later; (3) Year 9 biology with and without AI, testing retention three weeks on and whether students know when to rely on AI. They run in spring and summer 2027.</p>
+    <blockquote>"So far, most research has centred on how it can support teachers and there are significant gaps in our understanding of its impact on learning." — Prof. Becky Francis, EEF</blockquote>
+    <div class="pills"><a href="https://educationendowmentfoundation.org.uk/news/how-ai-affects-how-young-people-learn" target="_blank" rel="noopener">EEF</a></div>
+  </article>
+  <article class="card">
+    <div class="tags"><span class="tag">South Korea</span><span class="tag">Curriculum</span></div>
+    <h3>South Korea plans 1,500 AI-focused schools next year</h3>
+    <p>Korea's Education Ministry plans to grow its AI-focused schools from 1,141 now to 1,500 in 2027 and 2,000 in 2028. These schools teach at least twice the usual computer-science hours. For example, middle schools teach at least 102 hours instead of 68, and high schools offer AI or CS every year. Examples include fifth graders learning smart farming and AI robot soccer, and high-school students evaluating AI-generated answers against the evidence.</p>
+    <div class="pills"><a href="https://www.upi.com/Top_News/World-News/2026/11/27/ai-focused-schools-ai-education/7211795791782/" target="_blank" rel="noopener">UPI / Asia Today</a></div>
+  </article>
+  <article class="card">
+    <div class="tags"><span class="tag sc">🇦🇺 Australia</span><span class="tag">Integrity</span><span class="tag">Quick one</span></div>
+    <h3>TEQSA blocks 36 more cheating websites</h3>
+    <p>On 27 Nov, the higher-education regulator blocked another 36 commercial academic-cheating sites through Australian internet providers, bringing the total to 652. TEQSA warns that students who use these services risk blackmail and identity theft, which is worth telling VCE students heading to university.</p>
+    <div class="pills"><a href="https://www.teqsa.gov.au/about-us/news-and-events/latest-news/websites-blocked-protect-students-and-academic-integrity-2" target="_blank" rel="noopener">TEQSA</a></div>
+  </article>
+  <article class="card schools">
+    <div class="tags"><span class="tag sc">Schools</span></div>
+    <h3>🏫 For schools</h3>
+    <p>The Talkie case and the Duty of Care law are a good prompt to ask students (or wellbeing staff) which companion or character-chat apps they actually use. Then add companion apps to digital-safety lessons and parent comms before the summer holidays. The Children's Online Privacy Code starts on 10 Dec.</p>
+    <p>For our 2027 AI guidelines, the EEF trials test exactly the questions we face, like guided vs open AI and homework vs revision. Korea's "check the AI answer against the evidence" task could easily become a Year 10–11 activity.</p>
+  </article>
+</section>
+
+<section id="onx" class="xgroup">
+  <h2>𝕏 On X</h2>
+  <h4>ChatGPT / OpenAI</h4>
+  <article class="card"><p>Charlie Marsh (OpenAI) says Codex now pulls about 80% less data from the Responses API. One thread went from 7.48 MB to 930 KB. He's careful to say this does not mean Codex is "80% faster". It mostly saves bandwidth, though on a slow 1 Mbps connection the first chunk arrives about 200 ms sooner.</p>
+    <div class="pills"><a href="https://x.com/charliermarsh/status/2126381983945400542" target="_blank" rel="noopener">Charlie Marsh on X</a></div></article>
+  <article class="card"><p>@OpenAIDevs demoed a merch store you can talk to. GPT-Live-1.1 reads out rush fees and delivery estimates, the Decisions API scores damage on a returned mug, and WebMCP lets any agent use the cart.</p>
+    <div class="pills"><a href="https://x.com/OpenAIDevs/status/2126372238853112227" target="_blank" rel="noopener">OpenAIDevs on X</a></div></article>
+  <h4>Claude</h4>
+  <article class="card"><p>Anthropic co-founder Jack Clark posted a short story from Import AI 482 about "Machine Hermeneutics", a future field where humans' job is to explain science discovered by AI. Under his imagined rules, machine-designed insights must be "fully explainable by humans" before they can be used.</p>
+    <div class="pills"><a href="https://x.com/jackclarkSF/status/2126380579512057911" target="_blank" rel="noopener">Jack Clark on X</a></div></article>
+  <article class="card"><p>Thariq Shihipar, the former Claude Code team member now at OpenAI, asked Claude and Codex to make images for the same post. He says Claude's "looks better" and shows more creativity, while Codex "sticks to the spirit of what I want more".</p>
+    <div class="pills"><a href="https://x.com/trq212/status/2126386934918651919" target="_blank" rel="noopener">Thariq on X</a></div></article>
+  <h4>Grok</h4>
+  <article class="card"><p>Sam Sokolin (Grok Bot team): "You should now see an additional 11% more usage out of your plan, and up to 50% more usage for routines!" The team changed the routine harness so simple, repetitive steps skip calls to the AI model. Posted 27 Nov, 5:59 am Melbourne time.</p>
+    <div class="pills"><a href="https://x.com/SamSokolin/status/2126027973568466949" target="_blank" rel="noopener">Sam Sokolin on X</a></div></article>
+  <article class="card"><p>Elon Musk: "Every model has its strengths and weaknesses. Grok @Bot aims to use whichever one does the best job for the task you give it! Neon is looking particularly promising, but Opus is also excellent in most cases."</p>
+    <div class="pills"><a href="https://x.com/elonmusk/status/2126397498071670827" target="_blank" rel="noopener">Musk on X</a><a href="https://x.com/elonmusk/status/2126365899410341931" target="_blank" rel="noopener">"Keeps getting better"</a></div></article>
+  <h4>Notion</h4>
+  <article class="card"><p>Notion co-founder Ivan Zhao: "MKBHD likes the new @NotionCalendar, now fully native, with Duo support". @NotionHQ followed up with "MKBHD approved 🫡".</p>
+    <div class="pills"><a href="https://x.com/ivanhzhao/status/2126072920439160969" target="_blank" rel="noopener">Ivan Zhao on X</a><a href="https://x.com/NotionHQ/status/2126377715666387067" target="_blank" rel="noopener">NotionHQ on X</a></div></article>
+</section>
+
+<section id="gaps">
+  <h2>Gaps</h2>
+  <article class="card gaps">
+    <h3>What we didn't find today</h3>
+    <p class="s">With US Black Friday, @AnthropicAI, @claudeai, @OpenAI, @ChatGPTapp, @grok and @xai posted nothing notable. Anthropic's newsroom and Google's blog had no new launches. There was nothing new from Microsoft, Baidu or MiniMax beyond Talkie, and no Victorian AI-in-schools announcement (the national "digital detox" restrictions date from 2 Nov). The Digital Duty of Care notice doesn't give a Royal Assent date. I skipped DeepSeek V4.1 Flash-1017 and Ant's Lingguang 2.0, which some sites re-ran as new but date from October. I also skipped Norway's primary-school AI ban (June) and unofficial claims that Grok Bot is coming to X Chat for non-Premium users.</p>
+  </article>
+</section>
+</main>
+<footer class="wrap">AI Briefing · Saturday 28 November 2026 · Curated for JC<br>Audio narration: Microsoft neural voice (en-AU Natasha), generated for this page.</footer>
+
+<button id="top" aria-label="Back to top">↑</button>
+
+<script>
+(function(){
+  "use strict";
+  var $ = function(s,r){return (r||document).querySelector(s);};
+  var $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));};
+  var PD = [25.63, 43.46, 48.77, 37.7, 44.14, 41.57, 47.45, 40.8, 13.85], CD = [92.02, 48.1, 43.01, 30.77, 35.62, 33.86, 58.73, 36.19, 53.02, 55.39, 41.21, 23.71, 39.53, 26.95, 16.27, 19.94, 15.82, 21.46, 15.46, 13.68, 50.88];
+  var OFF = []; var TOTAL = PD.reduce(function(a,d,i){ OFF[i]=a; return a+d; },0);
+  function pad(n){ return (n<10?"0":"")+n; }
+  function fmt(t){ t=Math.max(0,Math.round(t)); return Math.floor(t/60)+":"+pad(t%60); }
+  function pfile(i){ return "audio/p"+pad(i+1)+".mp3"; }
+  function cfile(i){ return "audio/c"+pad(i+1)+".mp3"; }
+
+  /* ---------- theme ---------- */
+  var root = document.documentElement;
+  try{ var saved = localStorage.getItem("brief-theme"); if(saved) root.setAttribute("data-theme", saved);}catch(e){}
+  $("#theme").addEventListener("click", function(){
+    var cur = root.getAttribute("data-theme") ||
+      (window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try{ localStorage.setItem("brief-theme", next);}catch(e){}
+  });
+
+  /* ---------- reading time ---------- */
+  var words = ($("main").innerText || $("main").textContent).trim().split(/\s+/).length;
+  $("#rt").textContent = Math.max(1, Math.round(words/220)) + " min read";
+
+  /* ---------- back to top + active tab ---------- */
+  var topBtn = $("#top");
+  topBtn.addEventListener("click", function(){ window.scrollTo({top:0, behavior:"smooth"}); });
+  var tabs = $$("nav.tabs a");
+  var secs = tabs.map(function(a){ return document.getElementById(a.getAttribute("href").slice(1)); });
+  function onScroll(){
+    topBtn.classList.toggle("show", window.scrollY > 600);
+    var idx = -1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top < 120) idx = i; });
+    tabs.forEach(function(a,i){
+      var on = i === idx;
+      if(on && !a.classList.contains("on")){ try{ a.parentNode.scrollTo({left:a.offsetLeft - 16, behavior:"smooth"}); }catch(e){} }
+      a.classList.toggle("on", on);
+    });
+  }
+  window.addEventListener("scroll", onScroll, {passive:true}); onScroll();
+
+  /* ---------- elements ---------- */
+  var pp=$("#pp"), pstatus=$("#pstatus"), seek=$("#seek"), tcur=$("#tcur"), ttot=$("#ttot"), rateSel=$("#rate"), warn=$("#warn");
+  var paras = $$("#script p");
+  var cards = $$("main .card");
+  ttot.textContent = fmt(TOTAL);
+  try{ var r = localStorage.getItem("brief-rate"); if(r) rateSel.value = r; }catch(e){}
+  function rate(){ return parseFloat(rateSel.value) || 1; }
+
+  /* ---------- audio engine ---------- */
+  var audio = new Audio();
+  audio.preload = "auto";
+  try{ audio.preservesPitch = true; }catch(e){}
+  // state: mode "main" | "card" | null ; idx = paragraph or card index
+  var st = { mode:null, idx:0, playing:false, btn:null, pendingSeek:0, useSpeech:false };
+
+  function clearHL(){
+    $$(".reading").forEach(function(e){ e.classList.remove("reading"); });
+    $$(".say.on").forEach(function(b){ b.classList.remove("on","loading"); b.textContent = "🔊"; });
+  }
+  function hlPara(i){
+    paras.forEach(function(p,j){ p.classList.toggle("reading", j===i); });
+    if($("details.script").open && paras[i]){ try{ paras[i].scrollIntoView({block:"nearest",behavior:"smooth"}); }catch(e){} }
+  }
+  function ui(){
+    var mainPlaying = st.mode==="main" && st.playing;
+    pp.textContent = mainPlaying ? "❚❚" : "▶";
+    pp.setAttribute("aria-label", mainPlaying ? "Pause briefing" : "Listen to briefing");
+    if(st.mode==="main"){
+      pstatus.textContent = (st.playing?"Playing":"Paused") + " · paragraph " + (st.idx+1) + " of " + PD.length + (st.useSpeech?" · device voice":"");
+    }
+  }
+  function globalTime(){ return st.mode==="main" ? OFF[st.idx] + (st.useSpeech?0:(audio.currentTime||0)) : 0; }
+  function paintSeek(){
+    if(st.mode!=="main" || dragging) return;
+    var g = globalTime();
+    seek.value = Math.round(g / TOTAL * 1000);
+    tcur.textContent = fmt(g / 1);
+  }
+
+  function mediaSession(){
+    if(!("mediaSession" in navigator)) return;
+    try{
+      navigator.mediaSession.metadata = new MediaMetadata({title:"AI Briefing · Sat 28 Nov 2026", artist:"Curated for JC", album:"AI Briefing"});
+      navigator.mediaSession.setActionHandler("play", function(){ resume(); });
+      navigator.mediaSession.setActionHandler("pause", function(){ pause(); });
+      navigator.mediaSession.setActionHandler("previoustrack", function(){ jumpPara(st.idx-1); });
+      navigator.mediaSession.setActionHandler("nexttrack", function(){ jumpPara(st.idx+1); });
+    }catch(e){}
+  }
+
+  function playSrc(src, offset){
+    st.useSpeech = false;
+    audio.src = src;
+    st.pendingSeek = offset || 0;
+    audio.playbackRate = rate(); audio.defaultPlaybackRate = rate();
+    var p = audio.play();   // called synchronously inside the tap handler (iOS requirement)
+    if(p && p.catch) p.catch(function(err){
+      if(err && err.name === "NotAllowedError"){ st.playing=false; ui(); return; }
+      onAudioFail();
+    });
+  }
+  audio.addEventListener("loadedmetadata", function(){
+    if(st.pendingSeek){ try{ audio.currentTime = Math.min(st.pendingSeek, Math.max(0,audio.duration-0.2)); }catch(e){} st.pendingSeek = 0; }
+    audio.playbackRate = rate();
+  });
+  audio.addEventListener("play", function(){ audio.playbackRate = rate(); });
+  audio.addEventListener("timeupdate", paintSeek);
+  audio.addEventListener("ended", function(){
+    if(st.useSpeech) return;
+    if(st.mode==="main"){
+      if(st.idx < PD.length-1){ st.idx++; hlPara(st.idx); ui(); playSrc(pfile(st.idx), 0); }
+      else finish();
+    } else if(st.mode==="card"){ stop(); }
+  });
+  audio.addEventListener("error", function(){ if(st.mode && audio.getAttribute("src")) onAudioFail(); });
+  audio.addEventListener("pause", function(){ if(st.mode && !audio.ended && st.playing && !st.useSpeech && !switching){ st.playing=false; ui(); syncCardBtn(); } });
+  audio.addEventListener("playing", function(){ if(st.mode){ st.playing = true; ui(); } });
+  var switching = false;
+
+  function syncCardBtn(){
+    if(st.btn){ st.btn.classList.remove("loading"); st.btn.textContent = st.playing ? "■" : "▶"; }
+  }
+
+  function startMain(i, offset){
+    if(st.mode !== "main"){ stopAll(false); }
+    st.mode="main"; st.idx=Math.max(0,Math.min(PD.length-1,i)); st.playing=true;
+    hlPara(st.idx); ui(); mediaSession();
+    switching = true; playSrc(pfile(st.idx), offset||0); switching = false;
+  }
+  function jumpPara(i){ if(i<0||i>=PD.length) return; if(st.useSpeech){ speechMain(i); } else startMain(i,0); }
+  function pause(){
+    st.playing=false; if(st.useSpeech){ speechStop(); } else audio.pause(); ui(); syncCardBtn();
+  }
+  function resume(){
+    if(!st.mode){ startMain(0,0); return; }
+    if(st.useSpeech){ st.mode==="main" ? speechMain(st.idx) : null; return; }
+    st.playing=true; audio.playbackRate = rate();
+    var p = audio.play(); if(p&&p.catch) p.catch(function(){}); ui(); syncCardBtn();
+  }
+  function stopAll(resetUI){
+    switching = true; try{ audio.pause(); }catch(e){} switching = false;
+    speechStop();
+    st.mode=null; st.playing=false; st.btn=null; clearHL();
+    if(resetUI!==false){
+      pp.textContent="▶"; seek.value=0; tcur.textContent="0:00";
+      pstatus.textContent="Natural Australian voice · " + Math.floor(TOTAL/60) + " min " + Math.round(TOTAL%60) + " s";
+    }
+  }
+  function stop(){ stopAll(true); }
+  function finish(){ stopAll(true); seek.value=1000; tcur.textContent=fmt(TOTAL); pstatus.textContent="Finished · tap ▶ to listen again"; }
+
+  pp.addEventListener("click", function(){
+    if(st.mode==="main"){ st.playing ? pause() : resume(); } else startMain(0,0);
+  });
+  $("#stop").addEventListener("click", stop);
+  $("#prev").addEventListener("click", function(){ if(st.mode==="main"){ (!st.useSpeech && audio.currentTime>3) ? startMain(st.idx,0) : jumpPara(st.idx-1); } else startMain(0,0); });
+  $("#next").addEventListener("click", function(){ if(st.mode==="main") jumpPara(st.idx+1); else startMain(1,0); });
+  paras.forEach(function(p,i){ p.addEventListener("click", function(){ if(st.useSpeech && st.mode==="main") speechMain(i); else startMain(i,0); }); });
+
+  var dragging = false;
+  seek.addEventListener("input", function(){ dragging = true; tcur.textContent = fmt(seek.value/1000*TOTAL); });
+  seek.addEventListener("change", function(){
+    dragging = false;
+    var g = seek.value/1000*TOTAL, i = 0;
+    while(i < PD.length-1 && g >= OFF[i+1]) i++;
+    var off = g - OFF[i];
+    if(st.mode==="main" && i===st.idx && !st.useSpeech){ try{ audio.currentTime = off; }catch(e){} if(!st.playing) resume(); }
+    else if(st.useSpeech){ speechMain(i); }
+    else startMain(i, off);
+  });
+  rateSel.addEventListener("change", function(){
+    try{ localStorage.setItem("brief-rate", rateSel.value);}catch(e){}
+    audio.playbackRate = rate(); audio.defaultPlaybackRate = rate();
+    if(st.useSpeech && st.playing){ st.mode==="main" ? speechMain(st.idx) : null; }
+  });
+
+  /* per-card buttons */
+  cards.forEach(function(card, ci){
+    var b = document.createElement("button");
+    b.className="say"; b.type="button"; b.textContent="🔊"; b.setAttribute("aria-label","Listen to this story");
+    card.appendChild(b);
+    b.addEventListener("click", function(){
+      if(st.mode==="card" && st.btn===b){ st.playing ? pause() : resume(); return; }
+      stopAll(true);
+      st.mode="card"; st.idx=ci; st.btn=b; st.playing=true;
+      card.classList.add("reading"); b.classList.add("on","loading"); b.textContent="■";
+      switching = true; playSrc(cfile(ci), 0); switching = false;
+    });
+  });
+  audio.addEventListener("playing", function(){ if(st.btn){ st.btn.classList.remove("loading"); st.btn.textContent="■"; } });
+
+  /* ---------- fallback: device speech ---------- */
+  var synth = window.speechSynthesis, canSpeak = !!(synth && window.SpeechSynthesisUtterance), voices = [], tok = 0;
+  function rank(v){ var l=(v.lang||"").replace("_","-").toLowerCase(), n=(v.name||"").toLowerCase(), s=0;
+    if(l.indexOf("en-au")===0) s+=300; else if(l.indexOf("en-gb")===0) s+=200; else if(l.indexOf("en-us")===0) s+=150; else if(l.indexOf("en")===0) s+=100; else return -1;
+    if(/natural|neural|premium|enhanced|siri|google|online/.test(n)) s+=50; return s; }
+  function loadVoices(){ if(!canSpeak) return; var l=synth.getVoices()||[]; voices=l.filter(function(v){return rank(v)>=0;}).sort(function(a,b){return rank(b)-rank(a);}); }
+  if(canSpeak){ loadVoices(); try{ synth.onvoiceschanged = loadVoices; }catch(e){} }
+  function chunk(text){
+    var parts = text.match(/[^.!?…]+[.!?…]+["”’)]*\s*|[^.!?…]+$/g) || [text], out=[];
+    parts.forEach(function(p){ p=p.trim(); while(p.length>220){ var c=p.lastIndexOf(" ",220); if(c<1)c=220; out.push(p.slice(0,c)); p=p.slice(c).trim(); } if(p) out.push(p); });
+    return out;
+  }
+  function speechStop(){ tok++; if(canSpeak) synth.cancel(); }
+  function speakList(list, done){
+    var my = ++tok, k = 0;
+    (function nx(){
+      if(my!==tok) return;
+      if(k>=list.length){ done && done(); return; }
+      var u = new SpeechSynthesisUtterance(list[k]); var v = voices[0];
+      if(v){ u.voice=v; u.lang=v.lang; } else u.lang="en-AU";
+      u.rate = rate();
+      u.onend = function(){ if(my!==tok) return; k++; nx(); };
+      u.onerror = function(e){ if(my!==tok) return; if(e && (e.error==="interrupted"||e.error==="canceled")) return; k++; setTimeout(nx,50); };
+      synth.speak(u);
+    })();
+  }
+  function speechMain(i){
+    if(!canSpeak){ return; }
+    synth.cancel(); st.mode="main"; st.idx=i; st.playing=true; st.useSpeech=true; hlPara(i); ui(); paintSeekSpeech();
+    speakList(chunk(paras[i].textContent.trim()), function(){ if(st.idx < PD.length-1) speechMain(st.idx+1); else finish(); });
+  }
+  function paintSeekSpeech(){ seek.value = Math.round(OFF[st.idx]/TOTAL*1000); tcur.textContent = fmt(OFF[st.idx]); }
+  function onAudioFail(){
+    if(st.useSpeech || !st.mode) return;
+    if(!canSpeak){ warn.textContent = "Sorry, the audio couldn't load. Check your connection and try again."; warn.style.display="block"; stop(); return; }
+    warn.textContent = "Audio couldn't load, so your device's voice is reading instead."; warn.style.display="block";
+    if(st.mode==="main"){ speechMain(st.idx); }
+    else {
+      var card = cards[st.idx]; var parts=[];
+      $$("h3, p, blockquote", card).forEach(function(el){ var t=el.textContent.trim(); if(t) parts.push(t); });
+      st.useSpeech = true; synth.cancel();
+      speakList(chunk(parts.join(" ").replace(/🏫\s*/g,"")), function(){ stop(); });
+    }
+  }
+  window.addEventListener("pagehide", function(){ if(canSpeak) synth.cancel(); });
+})();
+
+</script>
+</body>
+</html>
